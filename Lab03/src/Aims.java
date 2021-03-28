@@ -3,7 +3,8 @@ public class Aims {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Order anOrder = new Order();
+		// Init object order
+		Order anOrder = Order.createdOrder();
 		
 //		Create a new dvd object and set the fields
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King");
@@ -31,8 +32,29 @@ public class Aims {
 //		remove dvd to the order
 //		anOrder.removeDigitalVideoDisc(dvd1);
 		
-		System.out.print("Total cost is: ");
-		System.out.println(anOrder.totalCost());
+		// dvd4
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("test1", "test1", "author 1", 123, 15.5f);
+		
+		// dvd5
+		DigitalVideoDisc dvd5 = new DigitalVideoDisc("test2", "test2", "author 2", 80, 19.5f);
+		
+		DigitalVideoDisc [] lisDisc = {dvd1, dvd2, dvd3};
+		
+		anOrder.addDigitalVideoDisc(lisDisc);
+		// Show items in anOrder
+		anOrder.printListOfOrdered();
+		
+		Order order2 = Order.createdOrder();
+		order2.addDigitalVideoDisc(dvd1, dvd3, dvd5);
+		order2.printListOfOrdered();
+		
+		Order order3 = Order.createdOrder();
+		order3.addDigitalVideoDisc(dvd1, dvd5, dvd2, dvd4);
+		order3.printListOfOrdered();
+		
+		Order order4 = Order.createdOrder();
+		order4.addDigitalVideoDisc(dvd1, dvd3);
+		order4.printListOfOrdered();
 	}
 
 }
