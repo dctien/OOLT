@@ -369,9 +369,6 @@ public class MyDate {
 		public int wordtonum(String word) {
 			String num = null;
 			switch (word) {
-			case "rezo":
-				num = "0";
-				break;
 			case "one":
 				num = "1";
 				break;

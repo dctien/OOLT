@@ -25,7 +25,7 @@ public class DataTest {
 		
 //		Test Constructor with 3 parameter string (day, month, year)
 		System.out.println("Test Case 5: ");
-		MyDate testDate5 = new MyDate("second", "january", "one thousand nine hundred nine");
+		MyDate testDate5 = new MyDate("second", "january", "two thousand twenty one");
 		testDate5.print();
 		
 		
@@ -39,7 +39,7 @@ public class DataTest {
            System.out.println(date[i]);
        }
 
-//       DateUtils.sortingDate(date);
+       DateUtils.sortingDate(date);
 
        // After Sorting
        System.out.println("After Sorting: ");

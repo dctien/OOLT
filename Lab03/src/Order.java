@@ -86,7 +86,8 @@ public class Order {
 		System.out.println("********************************ORDER " + nbOrders + "******************************");
 		dateOrdered.print();
 		for(int i = 0; i < qtyOrdered; i++) {
-			System.out.println(i+1 + ". DVD - " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost() + "$");
+			System.out.println(i+1 + ". DVD - " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() 
+					+ " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost() + "$");
 		}
 		System.out.println("Total cost: " + totalCost());
 		System.out.println("*******************************************************************");
