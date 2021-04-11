@@ -9,7 +9,7 @@ public class Order {
 	
 	private MyDate dateOrdered = new MyDate();
 	
-	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
+	public DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
 	public int qtyOrdered = 0;
 	
 	public MyDate getDateOrdered() {
@@ -75,6 +75,14 @@ public class Order {
 				qtyOrdered--;
 			}
 		}
+	}
+	
+	public DigitalVideoDisc getALuckyItem() {
+		double rand = Math.random();
+		rand *= qtyOrdered;
+		int item = (int)rand;
+		itemsOrdered[item].setCost(0.0f);
+		return itemsOrdered[item];
 	}
 	
 	public float totalCost() {
