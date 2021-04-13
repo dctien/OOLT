@@ -1,27 +1,11 @@
-package hust.soict.hedspi.aims.disc;
+package hust.soict.hedspi.aims.media;
 
-import java.util.Iterator;
-
-public class DigitalVideoDisc {
-	private String title;
-	private String category;
+public class DigitalVideoDisc extends Media{
 	private String director;
 	private int length;
-	private float cost;
 	
 //	Getters and Setters
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
+	
 	public String getDirector() {
 		return director;
 	}
@@ -34,12 +18,7 @@ public class DigitalVideoDisc {
 	public void setLength(int length) {
 		this.length = length;
 	}
-	public float getCost() {
-		return cost;
-	}
-	public void setCost(float cost) {
-		this.cost = cost;
-	}
+	
 	
 //	Constructors
 	public DigitalVideoDisc(String title) {

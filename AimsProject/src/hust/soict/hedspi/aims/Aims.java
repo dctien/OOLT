@@ -1,5 +1,9 @@
 package hust.soict.hedspi.aims;
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+
+//import java.util.Scanner;
+
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+//import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.order.Order;
 
 public class Aims {
@@ -16,21 +20,21 @@ public class Aims {
 		dvd1.setDirector("Roger Allers");
 		dvd1.setLength(87);
 //		add the dvd to the order
-		anOrder.addDigitalVideoDisc(dvd1);
+		anOrder.addMedia(dvd1);
 	
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars");
 		dvd2.setCategory("Science Fiction");
 		dvd2.setCost(24.95f);
 		dvd2.setDirector("George Lucas");
 		dvd2.setLength(124);
-		anOrder.addDigitalVideoDisc(dvd2);
+		anOrder.addMedia(dvd2);
 		
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin");
 		dvd3.setCategory("Animation");
 		dvd3.setCost(18.99f);
 		dvd3.setDirector("John Musker");
 		dvd3.setLength(90);
-		anOrder.addDigitalVideoDisc(dvd3);
+		anOrder.addMedia(dvd3);
 
 //		remove dvd to the order
 //		anOrder.removeDigitalVideoDisc(dvd1);
@@ -43,21 +47,21 @@ public class Aims {
 		
 		DigitalVideoDisc [] lisDisc = {dvd1, dvd2, dvd3};
 		
-		anOrder.addDigitalVideoDisc(lisDisc);
+		anOrder.addMedia(lisDisc);
 		// Show items in anOrder
-		anOrder.printListOfOrdered();
+//		anOrder.printListOfOrdered();
 		
 		Order order2 = Order.createdOrder();
-		order2.addDigitalVideoDisc(dvd1, dvd3, dvd5);
-		order2.printListOfOrdered();
+		order2.addMedia(dvd1, dvd3, dvd5);
+//		order2.printListOfOrdered();
 		
 		Order order3 = Order.createdOrder();
-		order3.addDigitalVideoDisc(dvd1, dvd5, dvd2, dvd4);
-		order3.printListOfOrdered();
+		order3.addMedia(dvd1, dvd5, dvd2, dvd4);
+//		order3.printListOfOrdered();
 		
 		Order order4 = Order.createdOrder();
-		order4.addDigitalVideoDisc(dvd1, dvd3);
-		order4.printListOfOrdered();
+		order4.addMedia(dvd1, dvd3);
+//		order4.printListOfOrdered();
 	}
 
 }
