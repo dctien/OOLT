@@ -4,13 +4,18 @@ public class Media {
 	protected String title;
 	protected String category;
 	protected float cost;
-
-	public String getTitle() {
-		return title;
+	protected String id;
+	
+	public String getId() {
+		return id;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getTitle() {
+		return title;
 	}
 
 	public String getCategory() {
@@ -28,9 +33,16 @@ public class Media {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
+	
+	public Media(String id, String title, float cost) {
+		this.id = id;
+		this.title = title;
+		this.cost = cost;
+	}
 
-	public Media() {
-		// TODO Auto-generated constructor stub
+	public Media(String id, String title, String category, float cost) {
+		this(id, title, cost);
+		this.category = category;
 	}
 
 }
