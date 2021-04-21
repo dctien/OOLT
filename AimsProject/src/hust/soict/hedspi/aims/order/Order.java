@@ -1,6 +1,10 @@
 package hust.soict.hedspi.aims.order;
+
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.utils.MyDate;
+import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+
 import java.util.ArrayList;
 
 public class Order {
@@ -37,10 +41,12 @@ public class Order {
 
 	public void addMedia(Media media) {
 		if(itemsOrdered.contains(media)) {
-			System.out.println("The media with title: " + media.getTitle() + " is existed!");
+			System.err.println("The media with title: " + media.getTitle() + " is existed!");
+		}else if(checkId(media.getId())) {
+			System.err.println("The media with id: " + media.getId() + " is existed!");
 		}else {
 			itemsOrdered.add(media);
-			System.out.println("The media with title: " + media.getTitle() + " has been added");
+			System.out.println("***The media with title: " + media.getTitle() + " has been added");
 		}
 	}
 	public void addMedia(Media... mediaList) {
@@ -51,8 +57,22 @@ public class Order {
 	public void removeMedia(Media media) {
 		if(itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
+			System.out.println("***Media with ID: " + media.getId() + " has been deleted!");
 		}else {
 			System.out.println("Can't not find!");
+		}
+	}
+	public void removeMedia(String id) {
+		int mark =0;
+		for(Media media: itemsOrdered) {
+			if(media.getId().equalsIgnoreCase(id)) {
+				removeMedia(media);
+				mark = 1;
+				break;
+			}
+		}
+		if(mark == 0) {
+			System.err.println("Can't find id");
 		}
 	}
 	
@@ -73,16 +93,30 @@ public class Order {
 		return money;
 	}
 	
-//	public void printListOfOrdered() {
-//		System.out.println("********************************ORDER******************************");
-//		dateOrdered.print();
-//		int i = 1;
-//		for(Media media: itemsOrdered) {
-//			System.out.println(i + ". Media - " + media.getId() + " - " + media.getTitle() + " - " + media.getCategory() +  ": " + media.getCost() + "$");
-//			i++;
-//		}
-//		System.out.println("Total cost: " + totalCost());
-//		System.out.println("*******************************************************************");
-//	}
+	public void printListOfOrdered() {
+		System.out.println("********************************ORDER******************************");
+		dateOrdered.print();
+		int i = 1;
+		System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s%n", "STT", "Type", "ID", "Title", "Category", "Total");
+		for(Media media: itemsOrdered) {
+			if(media instanceof Book) {
+				System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s$%n", i, "Book", media.getId(), media.getTitle(), media.getCategory(), media.getCost());
+			}else if(media instanceof DigitalVideoDisc) {
+				System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s$%n", i, "DVD", media.getId(), media.getTitle(), media.getCategory(), media.getCost());
+			}
+			i++;
+		}
+		System.out.println("Total cost: " + totalCost());
+		System.out.println("*******************************************************************");
+	}
+
+	public boolean checkId(String id) {
+		for(Media media: itemsOrdered) {
+			if(media.getId().equalsIgnoreCase(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

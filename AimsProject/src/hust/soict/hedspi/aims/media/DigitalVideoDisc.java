@@ -3,9 +3,6 @@ package hust.soict.hedspi.aims.media;
 public class DigitalVideoDisc extends Media{
 	private String director;
 	private int length;
-	
-//	Getters and Setters
-	
 	public String getDirector() {
 		return director;
 	}
@@ -18,31 +15,15 @@ public class DigitalVideoDisc extends Media{
 	public void setLength(int length) {
 		this.length = length;
 	}
-	
-	
-//	Constructors
-	public DigitalVideoDisc(String title) {
-		super();
-		this.title = title;
-	}
-	public DigitalVideoDisc(String title, String category) {
-		super();
-		this.title = title;
-		this.category = category;
-	}
-	public DigitalVideoDisc(String title, String category, String director) {
-		super();
-		this.title = title;
-		this.category = category;
-		this.director = director;
-	}
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
-		this.title = title;
-		this.category = category;
-		this.director = director;
+	//	Constructors
+	public DigitalVideoDisc(String id, String title, int length, float cost) {
+		super(id, title, cost);
 		this.length = length;
-		this.cost = cost;
+	}
+
+	public DigitalVideoDisc(String id, String title, String category, int length, float cost) {
+		super(id, title, category, cost);
+		this.length = length;
 	}
 	public boolean search(String title) { 
 		String[] inputSearch = title.toLowerCase().split(" ");
