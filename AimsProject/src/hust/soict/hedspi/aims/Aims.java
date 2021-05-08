@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims;
 
+
 import java.util.Scanner;
 
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
@@ -9,6 +10,7 @@ import hust.soict.hedspi.aims.order.Order;
 public class Aims {
 
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		int selection;
 		int case1 = 0;
@@ -45,8 +47,11 @@ public class Aims {
 						category = sc.nextLine();
 						System.out.printf("\tNhap cost: ");
 						cost = sc.nextFloat();
-//						System.out.printf("\tNhap author: ");
+						System.out.printf("\tNhap author: ");
+						// Add author
 //						String author = sc.nextLine();
+//						ArrayList<String> authorsList = new ArrayList<String>();
+//						authorsList.add(author);
 						Book anBook = new Book(id,title, category, cost);
 						anOrder.addMedia(anBook);
 						break;
@@ -65,7 +70,7 @@ public class Aims {
 						System.out.printf("\tNhap length: ");
 						length = sc.nextInt();
 						DigitalVideoDisc dvd = new DigitalVideoDisc(id, title, category, length, cost);
-						dvd.setDirector(director);
+//						dvd.setDirector(director);
 						anOrder.addMedia(dvd);
 						break;
 					case 0:
@@ -98,11 +103,11 @@ public class Aims {
 				}
 				break;
 			case 0:
-//				sc.close();
+				sc.close();
 				System.out.println("Bye!!!");
 				break;
 			default:
-				sc.close();
+//				sc.close();
 				System.err.println("Error input enter, again!");
 			}
 		} while (selection != 0);

@@ -1,4 +1,4 @@
-package hust.soict.hedspi.aims.order;
+	package hust.soict.hedspi.aims.order;
 
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.utils.MyDate;
@@ -77,13 +77,13 @@ public class Order {
 	}
 	
 	
-	public Media getALuckyItem() {
-		double rand = Math.random();
-		rand *= itemsOrdered.size();
-		int item = (int)rand;
-		itemsOrdered.get(item).setCost(0.0f);
-		return itemsOrdered.get(item);
-	}
+//	public Media getALuckyItem() {
+//		double rand = Math.random();
+//		rand *= itemsOrdered.size();
+//		int item = (int)rand;
+//		itemsOrdered.get(item).setCost(0.0f);
+//		return itemsOrdered.get(item);
+//	}
 	
 	public float totalCost() {
 		float money = 0.0f;
