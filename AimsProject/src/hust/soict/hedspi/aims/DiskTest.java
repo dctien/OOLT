@@ -2,9 +2,9 @@ package hust.soict.hedspi.aims;
 
 import java.util.Scanner;
 
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.order.Order;
 import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
 
 public class DiskTest {
 
