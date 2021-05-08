@@ -1,9 +1,10 @@
 package hust.soict.hedspi.aims.order;
 
 import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.book.Book;
+import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.disc.CompactDisc;
 import hust.soict.hedspi.aims.utils.MyDate;
-import hust.soict.hedspi.aims.media.Book;
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class Order {
 	// call constructor 
 	public static Order createdOrder() {
 		if(nbOrders < MAX_LIMITTED_ORDERS) {
+			System.out.println("thread order");
 			Order objOrder = new Order();
 			return objOrder;
 		}else {
@@ -77,13 +79,13 @@ public class Order {
 	}
 	
 	
-	public Media getALuckyItem() {
-		double rand = Math.random();
-		rand *= itemsOrdered.size();
-		int item = (int)rand;
-		itemsOrdered.get(item).setCost(0.0f);
-		return itemsOrdered.get(item);
-	}
+//	public Media getALuckyItem() {
+//		double rand = Math.random();
+//		rand *= itemsOrdered.size();
+//		int item = (int)rand;
+//		itemsOrdered.get(item).setCost(0.0f);
+//		return itemsOrdered.get(item);
+//	}
 	
 	public float totalCost() {
 		float money = 0.0f;
@@ -103,6 +105,8 @@ public class Order {
 				System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s$%n", i, "Book", media.getId(), media.getTitle(), media.getCategory(), media.getCost());
 			}else if(media instanceof DigitalVideoDisc) {
 				System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s$%n", i, "DVD", media.getId(), media.getTitle(), media.getCategory(), media.getCost());
+			}else if(media instanceof CompactDisc) {
+				System.out.printf("%-3s | %-6s | %-5s | %-15s | %-10s : %-10s$%n", i, "CD", media.getId(), media.getTitle(), media.getCategory(), media.getCost());
 			}
 			i++;
 		}
