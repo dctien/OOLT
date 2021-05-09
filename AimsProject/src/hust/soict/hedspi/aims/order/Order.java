@@ -7,6 +7,7 @@ import hust.soict.hedspi.aims.media.disc.CompactDisc;
 import hust.soict.hedspi.aims.utils.MyDate;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Order {
 	public static final int MAX_NUMBER_ORDERED =10;
@@ -44,8 +45,6 @@ public class Order {
 	public void addMedia(Media media) {
 		if(itemsOrdered.contains(media)) {
 			System.err.println("The media with title: " + media.getTitle() + " is existed!");
-		}else if(checkId(media.getId())) {
-			System.err.println("The media with id: " + media.getId() + " is existed!");
 		}else {
 			itemsOrdered.add(media);
 			System.out.println("***The media with title: " + media.getTitle() + " has been added");
