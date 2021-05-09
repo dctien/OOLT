@@ -2,6 +2,7 @@ package hust.soict.hedspi.aims.media;
 
 import hust.soict.hedspi.aims.media.disc.CompactDisc;
 import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.book.Book;
 
 public abstract class Media implements Comparable<Media>{
 	protected String title;
@@ -43,11 +44,14 @@ public abstract class Media implements Comparable<Media>{
 	}
 	
 	public int compareTo(Media media) {
-		if (media instanceof DigitalVideoDisc) {
+		if (this instanceof Book && (media instanceof DigitalVideoDisc || media instanceof CompactDisc)) {
 			return -1;
-		}else if(media instanceof CompactDisc)
+		}if(this instanceof DigitalVideoDisc && media instanceof CompactDisc)
+			return -1;
+		if(this instanceof CompactDisc && (media instanceof DigitalVideoDisc || media instanceof Book))
 			return 1;
-		else return 0;
-//		return this.category.compareTo(media.getCategory());
+		if(this instanceof DigitalVideoDisc && media instanceof Book)
+			return 1;
+		return 0;
 	}
 }
