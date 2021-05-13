@@ -1,4 +1,6 @@
-	package hust.soict.hedspi.aims.media.disc;
+package hust.soict.hedspi.aims.media.disc;
+
+import hust.soict.hedspi.aims.media.Media;
 
 public class DigitalVideoDisc extends Disc implements Playable{
 	// Constructor by title
@@ -27,5 +29,17 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	public void play() {
 		System.out.println("Playing DVD: " + this.getTitle());
 		System.out.println("DVD length: " + this.getLength());
+	}
+	
+	public int compareTo(Media media) {
+		if(media instanceof DigitalVideoDisc) {
+			if(this.getCost() < media.getCost())
+				return -1;
+			else if(this.getCost() == media.getCost())
+				return 0;
+			else return 1;
+		}else {
+			return super.compareTo(media);
+		}
 	}
 }
