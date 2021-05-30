@@ -137,7 +137,7 @@ public class TestMediaCompareTo {
 		collection.add(dvd);
 	}
 
-	private static void addCdToOrder(java.util.Collection<Media> collection) {
+	private static void addCdToOrder(java.util.Collection<Media> collection) throws PlayerException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("\tNhap id: ");
 		String id = sc.nextLine();
