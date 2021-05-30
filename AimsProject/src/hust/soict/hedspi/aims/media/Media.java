@@ -37,10 +37,18 @@ public abstract class Media implements Comparable<Media>{
 		this.category = category;
 	}
 	
-	public boolean equals(Object temp) {
-		if(id.equalsIgnoreCase( ((Media)temp).id) )
-			return true;
-		return false;
+	public boolean equals(Object temp) throws NullPointerException, ClassCastException{
+		if(temp != null) {
+			if(temp instanceof Media) {
+				if(this.getTitle().equalsIgnoreCase( ((Media)temp).getTitle() ) && this.getCost() == ((Media)temp).getCost())
+					return true;
+				return false;				
+			}else {
+				throw new ClassCastException("ERROR: Object casting");
+			}
+		}else {
+			throw new NullPointerException("ERROR: Null pointerexception");
+		}
 	}
 	
 	public int compareTo(Media media) {

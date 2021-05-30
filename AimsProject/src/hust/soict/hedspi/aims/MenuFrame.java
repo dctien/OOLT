@@ -20,6 +20,7 @@ import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.book.Book;
 import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
 import hust.soict.hedspi.aims.order.Order;
+import hust.soict.hedspi.aims.exceptions.CreateOrderException;
 
 public class MenuFrame extends JFrame{
 	JButton createButton = new JButton("Create new Order");;
@@ -50,7 +51,12 @@ public class MenuFrame extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				anOrder = Order.createdOrder();
+				try {
+					anOrder = Order.createdOrder();
+				} catch (CreateOrderException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if (anOrder != null)
 					JOptionPane.showMessageDialog(null,"Create new Order successfully");
 				else {
@@ -128,6 +134,7 @@ public class MenuFrame extends JFrame{
 					String column_names[]= {"ID","Type","Title","Category","Cost($)"};
 					List<Media> items = new ArrayList<Media>();
 					items = anOrder.itemsOrdered;
+					java.util.Collections.sort(items);
 					DefaultTableModel model = new DefaultTableModel(null,column_names); 
 					JTable table = new JTable(model);
 					

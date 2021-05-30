@@ -6,6 +6,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+
+import hust.soict.hedspi.aims.exceptions.AddMediaException;
+import hust.soict.hedspi.aims.exceptions.CreateOrderException;
+import hust.soict.hedspi.aims.exceptions.PlayerException;
 import hust.soict.hedspi.aims.media.book.Book;
 import hust.soict.hedspi.aims.media.disc.CompactDisc;
 import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
@@ -104,7 +108,7 @@ public class Aims extends JFrame{
 		anOrder.removeMedia(id);
 	}
 
-	private static void addCdToOrder(Order anOrder) {
+	private static void addCdToOrder(Order anOrder) throws AddMediaException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("\tNhap id: ");
 		String id = sc.nextLine();
@@ -145,7 +149,7 @@ public class Aims extends JFrame{
 			switch (ask) {
 			case "yes":
 				System.out.println("===============================");
-				cd.play();
+//				cd.play();
 				System.out.println("===============================");
 				break;
 			case "no":
@@ -157,7 +161,7 @@ public class Aims extends JFrame{
 		anOrder.addMedia(cd);
 	}
 
-	private static void addDvdToOrder(Order anOrder) {
+	private static void addDvdToOrder(Order anOrder) throws AddMediaException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("\tNhap id: ");
 		String id = sc.nextLine();
@@ -180,7 +184,11 @@ public class Aims extends JFrame{
 			switch (ask) {
 			case "yes":
 				System.out.println("===============================");
-				dvd.play();
+				try {
+					dvd.play();
+				} catch (PlayerException e) {
+					System.err.println(e.getMessage());
+				}
 				System.out.println("===============================");
 				break;
 			case "no":
@@ -192,7 +200,7 @@ public class Aims extends JFrame{
 		anOrder.addMedia(dvd);
 	}
 
-	private static void addBookToOrder(Order anOrder) {
+	private static void addBookToOrder(Order anOrder) throws AddMediaException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("\tNhap id: ");
 		String id = sc.nextLine();
@@ -223,7 +231,7 @@ public class Aims extends JFrame{
 		anOrder.addMedia(aBook);
 	}
 
-	private static Order createOrder() {
+	private static Order createOrder() throws CreateOrderException {
 		Order anOrder;
 		anOrder = Order.createdOrder();
 		System.out.println("***Creat new order successfully!");
