@@ -47,6 +47,7 @@ public class Book extends Media{
 		}
 	}
 
+	@Override
 	public String toString() {
 		String string = "";
 		string += "Id: " + super.id + "\n";
@@ -74,9 +75,9 @@ public class Book extends Media{
 	public Book(String id, String title, String category, float cost) {
 		super(id, title, category, cost);
 	}
-
-	public Book(String id, String title, float cost, ArrayList<String> authors) {
-		super(id, title, cost);
+	
+	public Book(String id, String title, String category, float cost, ArrayList<String> authors) {
+		super(id, title, category, cost);
 		if(authors.size() != 0) {
 			this.authors = authors;
 		}else {

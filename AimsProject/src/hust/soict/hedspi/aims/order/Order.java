@@ -7,6 +7,9 @@ import hust.soict.hedspi.aims.media.book.Book;
 import hust.soict.hedspi.aims.media.disc.CompactDisc;
 import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
 import hust.soict.hedspi.aims.utils.MyDate;
+import hust.soict.hedspi.aims.exceptions.AddMediaException;
+import hust.soict.hedspi.aims.exceptions.CreateOrderException;
+import hust.soict.hedspi.aims.exceptions.InputException;
 
 public class Order {
 	public static final int MAX_NUMBER_ORDERED =10;
@@ -26,14 +29,14 @@ public class Order {
 	}
 	
 	// call constructor 
-	public static Order createdOrder() {
+	public static Order createdOrder() throws CreateOrderException{
 		if(nbOrders < MAX_LIMITTED_ORDERS) {
 			System.out.println("thread order");
 			Order objOrder = new Order();
 			return objOrder;
 		}else {
 			System.err.println("The limitted orders is almost full!");
-			return null;
+			throw new CreateOrderException("The limitted orders is almost full!");
 		}
 	}
 	
@@ -41,9 +44,10 @@ public class Order {
 //		return qtyOrdered;
 //	}
 
-	public void addMedia(Media media) {
+	public void addMedia(Media media) throws AddMediaException {
 		if(itemsOrdered.contains(media)) {
 			System.err.println("The media with title: " + media.getTitle() + " is existed!");
+			throw new AddMediaException("The media with title: " + media.getTitle() + " is existed!\nCan't add into Order");
 		}else {
 			itemsOrdered.add(media);
 			System.out.println("***The media with title: " + media.getTitle() + " has been added");
@@ -51,7 +55,11 @@ public class Order {
 	}
 	public void addMedia(Media... mediaList) {
 		for(int i = 0; i < mediaList.length; i++) {
-			addMedia(mediaList[i]);
+			try {
+				addMedia(mediaList[i]);
+			} catch (AddMediaException e) {
+				System.err.println(e.getMessage());
+			}
 		}
 	}
 	public void removeMedia(Media media) {
@@ -62,28 +70,29 @@ public class Order {
 			System.out.println("Can't not find!");
 		}
 	}
-	public void removeMedia(String id) {
-		int mark =0;
+	public boolean removeMedia(String id) {
+		boolean mark =false;
 		for(Media media: itemsOrdered) {
 			if(media.getId().equalsIgnoreCase(id)) {
 				removeMedia(media);
-				mark = 1;
+				mark = true;
 				break;
 			}
 		}
-		if(mark == 0) {
+		if(mark == false) {
 			System.err.println("Can't find id");
 		}
+		return mark;
 	}
 	
 	
-//	public Media getALuckyItem() {
-//		double rand = Math.random();
-//		rand *= itemsOrdered.size();
-//		int item = (int)rand;
-//		itemsOrdered.get(item).setCost(0.0f);
-//		return itemsOrdered.get(item);
-//	}
+	public Media getALuckyItem() {
+		double rand = Math.random();
+		rand *= itemsOrdered.size();
+		int item = (int)rand;
+		System.out.println( itemsOrdered.get(item).getCost());
+		return itemsOrdered.get(item);
+	}
 	
 	public float totalCost() {
 		float money = 0.0f;

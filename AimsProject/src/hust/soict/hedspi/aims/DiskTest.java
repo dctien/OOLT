@@ -3,12 +3,13 @@ package hust.soict.hedspi.aims;
 import java.util.Scanner;
 
 import hust.soict.hedspi.aims.order.Order;
+import hust.soict.hedspi.aims.exceptions.CreateOrderException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.disc.DigitalVideoDisc;
 
 public class DiskTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CreateOrderException {
 		// TODO Auto-generated method stub
 		// dvd1
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("a123", "The Lion King", 87, 19.95f);
